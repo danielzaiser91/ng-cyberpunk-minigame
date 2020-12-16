@@ -2,7 +2,7 @@
   <div class="outer-title"> CODE MATRIX</div>
   <div class="inner" [class]="toggleXY ? 'x-hover' : 'y-hover'">
     <div
-      *ngFor="let x of exampleMatrix"
+      *ngFor="let x of matrix"
       class="hacker-row">
       <span
         *ngFor="let y of x; index as i"
@@ -17,15 +17,27 @@
   <span class="title">BUFFER</span>
   <div class="buffer-box">
     <span *ngFor="let b of buffer" class="buffer-item">{{b}}</span>
+    <div class="cyberdeck">Cyberdeck:
+      <button (click)="deck(4)">Common</button>
+      <button (click)="deck(6)">Rare</button>
+      <button (click)="deck(8)">Epic</button>
+      <button (click)="deck(12)">Legendary</button>
+    </div>
   </div>
 </div>
 <div class="solution">
   <span class="title">SOLUTION</span>
   <div class="buffer-box">
-    <span *ngFor="let a of solution" class="buffer-item">{{a}}</span>
+    <span>1</span>
+    <span *ngFor="let a of solution[0]" class="buffer-item">{{a}}</span>
+    <span *ngIf="correct(1); else nope">✅</span>
   </div>
-  <span *ngIf="correct()">GESCHAFFT!!!</span>
-  <ng-template><span>VERLOREN!!!</span></ng-template>
+  <div class="buffer-box">
+    <span>2</span>
+    <span *ngFor="let a of solution[1]" class="buffer-item">{{a}}</span>
+    <span *ngIf="correct(2); else nope">✅</span>
+  </div>
+  <ng-template #nope><span>❌</span></ng-template>
 </div>
 <button (click)="reset()">reset</button>
-<button (click)="corrected()">correct?</button>
+<button (click)="log()">log</button>
