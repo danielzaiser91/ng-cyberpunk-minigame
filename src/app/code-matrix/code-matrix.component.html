@@ -1,0 +1,31 @@
+<div class="outer">
+  <div class="outer-title"> CODE MATRIX</div>
+  <div class="inner" [class]="toggleXY ? 'x-hover' : 'y-hover'">
+    <div
+      *ngFor="let x of exampleMatrix"
+      class="hacker-row">
+      <span
+        *ngFor="let y of x; index as i"
+        class="hacker-td"
+        (click)="clickedElement($event)"
+        (mouseenter)="hoveredId = i"
+        [class.selected-column]="i == hoveredId">{{ y }}</span>
+    </div>
+  </div>
+</div>
+<div class="buffer">
+  <span class="title">BUFFER</span>
+  <div class="buffer-box">
+    <span *ngFor="let b of buffer" class="buffer-item">{{b}}</span>
+  </div>
+</div>
+<div class="solution">
+  <span class="title">SOLUTION</span>
+  <div class="buffer-box">
+    <span *ngFor="let a of solution" class="buffer-item">{{a}}</span>
+  </div>
+  <span *ngIf="correct()">GESCHAFFT!!!</span>
+  <ng-template><span>VERLOREN!!!</span></ng-template>
+</div>
+<button (click)="reset()">reset</button>
+<button (click)="corrected()">correct?</button>

@@ -1,0 +1,66 @@
+.outer
+  border: 1px solid #e7ff7c
+  width: 360px
+  height: 230px
+  background-color: #221f2c
+  .outer-title
+    background-color: #e7ff7c
+    color: #221f2c61
+    width: 100%
+    height: 30px
+    display: flex
+    flex-direction: column
+    justify-content: center
+.inner
+  margin-top: 3px
+  width: 100%
+  .hacker-td
+    color: #d5dbb5
+    padding: 4px 10px
+    font-size: 1.2rem
+    border: 1px solid transparent
+    &:hover
+      cursor: pointer
+      border: 1px solid #a1fbf9
+    &.selected-column
+      background-color: #2e322c
+        
+  .hacker-row
+    display: flex
+    justify-content: center
+    flex-direction: row
+
+.x-hover
+  .hacker-td.selected-column
+    background-color: #2e322c
+  .hacker-row:hover
+    background-color: #39404b
+    .hacker-td.selected-column
+      background-color: #39404b
+.y-hover
+  .hacker-td.selected-column
+    background-color: #39404b
+  .hacker-row:hover
+    background-color: #2e322c
+    .hacker-td.selected-column
+      background-color: #2e322c
+.buffer, .solution
+  .title
+    background: #2e322c
+    color: #d5dbb5
+    padding: 5px
+  .buffer-box
+    display: flex
+    width: fit-content
+    background: #2e322c
+    color: #d5dbb5
+    padding: 7px 10px
+    border: 2px solid #d5dbb5
+    .buffer-item
+      width: 23px
+      height: 18px
+      padding: 2px
+      margin-left: 3px
+      border: 1px dotted
+      display: inline-block
+      text-align: center

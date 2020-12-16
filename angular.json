@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "ng-cyberpunk-minigame"
+  "defaultProject": "ng-cyberpunk-minigame",
+  "cli": {
+    "analytics": "51181da4-440b-4982-99cc-e30382ac9b2d"
+  }
 }
