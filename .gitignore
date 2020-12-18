@@ -1,46 +1,53 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+*.pyc
+*.pyo
+*.class
+*~
+*.DS_Store
+wine-py2exe/
+py2exe.log
+*.kate-swp
+build/
+dist/
+MANIFEST
+README.txt
+youtube-dl.1
+youtube-dl.bash-completion
+youtube-dl.fish
+youtube_dl/extractor/lazy_extractors.py
+youtube-dl
+youtube-dl.exe
+youtube-dl.tar.gz
+.coverage
+cover/
+updates_key.pem
+*.egg-info
+*.srt
+*.ttml
+*.sbv
+*.vtt
+*.flv
+*.mp4
+*.m4a
+*.m4v
+*.mp3
+*.3gp
+*.wav
+*.ape
+*.mkv
+*.swf
+*.part
+*.ytdl
+*.swp
+test/local_parameters.json
+.tox
+youtube-dl.zsh
 
-# compiled output
-/dist
-/tmp
-/out-tsc
-# Only exists if Bazel was run
-/bazel-out
+# IntelliJ related files
+.idea
+*.iml
 
-# dependencies
-/node_modules
+tmp/
+venv/
 
-# profiling files
-chrome-profiler-events*.json
-speed-measure-plugin*.json
-
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-.history/*
-
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
-
-# System Files
-.DS_Store
-Thumbs.db
+# VS Code related files
+.vscode
