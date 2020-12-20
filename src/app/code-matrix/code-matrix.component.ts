@@ -24,6 +24,9 @@ export class CodeMatrixComponent implements OnInit {
   bufferClean: string[] = [];
   maxBuffer = 4;
   solution: string[][] = [];
+  solveTry: string[][] = [];
+  solvable = true;
+  possibleSolutionCount = 4;
 
   constructor() { }
 
@@ -45,8 +48,11 @@ export class CodeMatrixComponent implements OnInit {
         this.matrix[i].push(this.possibleValues[this.rand(this.possibleValues.length)]);
       }
     }
-    for(let i = 0; i < 2; i++) {
-      for(let y = 0; y < 3; y++) {
+    for(let i = 0; i < this.possibleSolutionCount; i++) {
+      const possibleSolutionLength = this.rand(3,2);
+      if(i == 0) this.solveTry = [];
+      this.solveTry.push([]);
+      for(let y = 0; y < possibleSolutionLength; y++) {
         if(y == 0) this.solution[i] = [];
         // fill solution array
         this.solution[i].push(this.possibleValues[this.rand(this.possibleValues.length)]);
@@ -59,19 +65,37 @@ export class CodeMatrixComponent implements OnInit {
     this.buffer.push(el.target.innerText);
     this.bufferClean = this.buffer.filter(x=>!!x);
     this.buffer = [...this.bufferClean];
-    const length = this.buffer.length;
-    for(let i = 0; i < (this.maxBuffer - length); i++) this.buffer.push('');
+    const cleanL = this.bufferClean.length;
+    const bufferL = this.buffer.length;
+    for(let i = 0; i < (this.maxBuffer - bufferL); i++) this.buffer.push('');
     if(this.buffer.length > this.maxBuffer) this.buffer.pop();
+
+    if(!!cleanL) {
+      for(let y = 0; y < this.solution.length; y++){
+        for(let i = this.bufferClean.length; i > 0; i--) {
+          if(this.bufferClean[this.bufferClean.length - i] == this.solution[y][0]) {
+            const slice = this.bufferClean.slice(i-1, this.bufferClean.length);
+            if (this.solution[y].toLocaleString().includes(slice.toLocaleString())) {
+              this.solveTry[y].push(...slice);
+            } else {
+              this.solveTry[y] = [];
+            }
+          }
+        }
+      }
+    }
+    this.log(this.solveTry);
   }
 
   reset() {
-    this.buffer = ['','','',''];
+    this.buffer = [];
+    for(let i = 0; i < (this.maxBuffer - this.buffer.length); i++) this.buffer.push('');
     this.bufferClean = [];
     this.randomize();
   }
 
   rand(range: number, startAt = 0) {
-    return (Math.floor(Math.random() * 10) % range) + startAt;
+    return (Math.floor(Math.random() * 10)) % range + startAt;
   }
 
   correct(nr: number){

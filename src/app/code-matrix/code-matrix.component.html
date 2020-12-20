@@ -8,7 +8,7 @@
           *ngFor="let y of x; index as i"
           class="hacker-td"
           (click)="clickedElement($event)"
-          (mouseenter)="hoveredCol = i; log(hoveredEl); log(x[i])"
+          (mouseenter)="hoveredCol = i"
           [class.selected-column]="i == hoveredCol"
           [class.highlightCell]="x[i] == hoveredEl">{{ y }}</span>
       </div>
@@ -28,10 +28,11 @@
   <div class="solution">
     <div class="sequence-box"
       *ngFor="let a of solution; index as i"
-      [ngClass]="correct(i) ? 'solved' : 'failed'">
+      [ngClass]="correct(i) ? 'solved' : solveTry[i] ? '' : a.length < buffer.length - bufferClean.length ? '' : 'failed'">
       <span
         *ngFor="let x of a; index as i"
         class="sequence-item"
+        [class.col-highlight]="bufferClean.length == i+1"
         (mouseenter)="hoveredEl = x"
         (mouseleave)="hoveredEl = ''">{{x}}</span>
         <span class="sequence-description"></span>

@@ -55,14 +55,14 @@
     .hacker-td.selected-column
       background-color: #2e322c
 
-.buffer
+.buffer, .solution
   position: absolute
   left: 43.36vw
   top: 9vw
   @media (min-width: 1800px)
     left: 780px
     top: 162px
-  .buffer-box
+  .buffer-box, .sequence-box
     align-items: center
     display: flex
     width: fit-content
@@ -71,7 +71,7 @@
     border: 2px solid #7f8854
     @media (min-width: 1800px)
       padding: 7.2px
-    .buffer-item
+    .buffer-item, .sequence-item
       width: 3vw
       height: 2.5vw
       padding: 0.05vw
@@ -92,18 +92,28 @@
   z-index: 1
   width: 46.1vw
   top: 17.3vw
-  left: 44.3vw
   color: white
   @media (min-width: 1800px)
     top: 312px
-    left: 799px
     width: 830px
   .sequence-box
+    width: 100%
+    border: none
+    padding: 0 0.5vw
+    @media (min-width: 1800px)
+      padding: 0 9px
     &.solved
       background-color: #1bd575
       color: #0d7a41
     &.failed
       background-color: #ff5751
       color: #c82f2b
+    .sequence-item
+      border: none
+      padding: 0.4vw 0.1vw
+      @media (min-width: 1800px)
+        padding: 7.2px 1.8px
 .d-none
   display: none
+.sequence-box:not(.solved) .col-highlight
+  background-color: #232034
