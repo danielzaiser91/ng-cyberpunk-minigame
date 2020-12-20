@@ -28,7 +28,7 @@
   <div class="solution">
     <div class="sequence-box"
       *ngFor="let a of solution; index as i"
-      [ngClass]="correct(i) ? 'solved' : solveTry[i] ? '' : a.length < buffer.length - bufferClean.length ? '' : 'failed'">
+      [ngClass]="correct(i) ? 'solved' : (maxBuffer - bufferClean.length + solveTry[i].length) >= a.length ? '' : 'failed'">
       <span
         *ngFor="let x of a; index as i"
         class="sequence-item"

@@ -70,6 +70,7 @@ export class CodeMatrixComponent implements OnInit {
     for(let i = 0; i < (this.maxBuffer - bufferL); i++) this.buffer.push('');
     if(this.buffer.length > this.maxBuffer) this.buffer.pop();
 
+    // check if buffer contains solution
     if(!!cleanL) {
       for(let y = 0; y < this.solution.length; y++){
         for(let i = this.bufferClean.length; i > 0; i--) {
