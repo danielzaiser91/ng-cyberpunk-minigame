@@ -37,6 +37,7 @@ export class CodeMatrixComponent implements OnInit {
   deck(size: number) {
     this.maxBuffer = size;
     this.buffer = [];
+    this.bufferClean = [];
     for(let i = 0; i < this.maxBuffer; i++) this.buffer.push('');
   }
 
@@ -65,13 +66,15 @@ export class CodeMatrixComponent implements OnInit {
     this.buffer.push(el.target.innerText);
     this.bufferClean = this.buffer.filter(x=>!!x);
     this.buffer = [...this.bufferClean];
-    const cleanL = this.bufferClean.length;
     const bufferL = this.buffer.length;
     for(let i = 0; i < (this.maxBuffer - bufferL); i++) this.buffer.push('');
     if(this.buffer.length > this.maxBuffer) this.buffer.pop();
+    this.bufferInSolution();
+  }
 
-    // check if buffer contains solution
-    if(!!cleanL) {
+  // check if buffer contains solution and fill the solveTry Array if so
+  bufferInSolution() {
+    if(!!this.bufferClean.length) {
       for(let y = 0; y < this.solution.length; y++){
         for(let i = this.bufferClean.length; i > 0; i--) {
           if(this.bufferClean[this.bufferClean.length - i] == this.solution[y][0]) {
@@ -85,12 +88,11 @@ export class CodeMatrixComponent implements OnInit {
         }
       }
     }
-    this.log(this.solveTry);
   }
 
   reset() {
     this.buffer = [];
-    for(let i = 0; i < (this.maxBuffer - this.buffer.length); i++) this.buffer.push('');
+    for(let i = 0; i < this.maxBuffer; i++) this.buffer.push('');
     this.bufferClean = [];
     this.randomize();
   }

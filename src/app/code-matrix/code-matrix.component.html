@@ -17,12 +17,6 @@
   <div class="buffer">
     <div class="buffer-box">
       <span *ngFor="let b of buffer" class="buffer-item">{{b}}</span>
-      <div class="d-none">Cyberdeck:
-        <button (click)="deck(4)">Common</button>
-        <button (click)="deck(6)">Rare</button>
-        <button (click)="deck(8)">Epic</button>
-        <button (click)="deck(12)">Legendary</button>
-      </div>
     </div>
   </div>
   <div class="solution">
@@ -38,6 +32,14 @@
         <span class="sequence-description"></span>
     </div>
   </div>
-  <button class="d-none" (click)="reset()">reset</button>
-  <button class="d-none" (click)="log('')">log</button>
+  <div class="options">
+    <button class="" (click)="reset()">reset</button>
+    <div class="cyberdeck">Cyberdeck:
+      <button (click)="deck(4)">Common</button>
+      <button (click)="deck(6)">Rare</button>
+      <button (click)="deck(8)">Epic</button>
+      <button (click)="deck(12)">Legendary</button>
+    </div>
+    <button class="d-none" (click)="log('')">log</button>
+  </div>
 </div>
