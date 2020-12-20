@@ -41,16 +41,19 @@ export class CodeMatrixComponent implements OnInit {
     for(let i = 0; i < 6; i++) {
       for(let y = 0; y < 6; y++) {
         if(y == 0) this.matrix[i] = [];
-        this.matrix[i].push(this.possibleValues[this.rand(6)]);
+        // fill matrix array
+        this.matrix[i].push(this.possibleValues[this.rand(this.possibleValues.length)]);
       }
     }
     for(let i = 0; i < 2; i++) {
       for(let y = 0; y < 3; y++) {
         if(y == 0) this.solution[i] = [];
-        this.solution[i].push(this.possibleValues[this.rand(6)]);
+        // fill solution array
+        this.solution[i].push(this.possibleValues[this.rand(this.possibleValues.length)]);
       }
     }
   }
+
   clickedElement(el: any) {
     this.toggleXY = !this.toggleXY
     this.buffer.push(el.target.innerText);
@@ -60,18 +63,23 @@ export class CodeMatrixComponent implements OnInit {
     for(let i = 0; i < (this.maxBuffer - length); i++) this.buffer.push('');
     if(this.buffer.length > this.maxBuffer) this.buffer.pop();
   }
+
   reset() {
     this.buffer = ['','','',''];
     this.bufferClean = [];
     this.randomize();
   }
+
   rand(range: number, startAt = 0) {
     return (Math.floor(Math.random() * 10) % range) + startAt;
   }
+
   correct(nr: number){
     if (this.bufferClean.length == 0) return false;
     return this.bufferClean.toLocaleString().includes(this.solution[nr].toLocaleString())
   }
+
+  // debugging
   log(text: any){
     console.log(text);
   }

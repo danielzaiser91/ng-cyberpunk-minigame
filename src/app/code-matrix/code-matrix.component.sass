@@ -1,24 +1,33 @@
 .background
   background: url('./../../assets/images/hackingBackground.jpg') no-repeat
   background-size: contain
-  width: 100vw
-  height: 100vh
-  position: relative
+  width: 98vw
+  max-width: 1760px
+  height: 57vw
+  max-height: 990px
 .outer
   z-index: 1
   position: absolute
-  width: 33vw
-  left: 9vw
-  top: 18vw
+  width: 32.6vw
+  left: 8.77vw
+  top: 17.57vw
+  @media (min-width: 1800px)
+    left: 158px
+    top: 317px
+    width: 588px
 .inner
   width: 100%
   .hacker-td
     color: #d5dbb5
-    width: 32px
+    width: 3.97vw
     text-align: center
-    padding: 0.5vw
+    padding: 0.49vw 0.39vw
     font-size: 1.8vw
     border: 1px solid transparent
+    @media (min-width: 1800px)
+      font-size: 32px
+      width: 71.6px
+      padding: 8.8px 7px
     &:hover
       cursor: pointer
       border: 1px solid #a1fbf9
@@ -48,30 +57,47 @@
 
 .buffer
   position: absolute
-  left: 44.3vw
-  top: 9.2vw
+  left: 43.36vw
+  top: 9vw
+  @media (min-width: 1800px)
+    left: 780px
+    top: 162px
   .buffer-box
     align-items: center
     display: flex
     width: fit-content
     color: #d5dbb5
-    padding: 0.8vw 0.6vw
+    padding: 0.4vw
     border: 2px solid #7f8854
+    @media (min-width: 1800px)
+      padding: 7.2px
     .buffer-item
-      width: 1.7vw
-      height: 1.5vw
+      width: 3vw
+      height: 2.5vw
       padding: 0.05vw
-      margin-left: 3px
+      margin-left: 0.3vw
       border: 1px dotted
-      font-size: 1.5vw
-      text-align: center
+      font-size: 1.8vw
+      display: flex
+      align-items: center
+      justify-content: center
+      @media (min-width: 1800px)
+        padding: 0.9px
+        margin-left: 5.4px
+        width: 54px
+        height: 45px
+        font-size: 32px
 .solution
   position: absolute
   z-index: 1
-  width: 46.6vw
-  top: 17.7vw
-  left: 45.4vw
+  width: 46.1vw
+  top: 17.3vw
+  left: 44.3vw
   color: white
+  @media (min-width: 1800px)
+    top: 312px
+    left: 799px
+    width: 830px
   .sequence-box
     &.solved
       background-color: #1bd575
